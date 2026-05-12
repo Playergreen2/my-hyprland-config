@@ -1,0 +1,163 @@
+[
+  {
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+
+  "modules-left": ["custom/notifications"],
+  "modules-center": ["backlight","battery","mpris","clock","custom/app_launcher","pulseaudio","network","bluetooth"],
+  "modules-right": [],
+
+
+  "custom/notifications": {
+    "exec": "swaync-client -c",
+    "format": "󰂚 {}",
+    "interval": 2,
+    "on-click": "swaync-client -t"
+  },
+
+  "mpris": {
+    "interval": 1,
+    "format": " {player_icon} {status_icon} {position}/{length} ",
+    "player": "playerctld",
+    "max-length": 50,
+    "on-click": "eww open music-widget --toggle",
+    "on-click-right": "playerctl play-pause",
+    "format-paused": " {player_icon} {status_icon} {position}/{length} ",
+    "player-icons": {
+      "default": "",
+      "spotify": " ",
+      "mpv": " "
+    },
+    "status-icons": {
+      "paused": "⏸",
+      "playing": "▶"
+    }
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "hyprland/window": {
+    "format": "{title}"
+  },
+
+  "bluetooth": {
+      "format": "",
+      "format-disabled": "󰂲",
+      "format-off": "󰂲",
+      "format-connected": "",
+      "tooltip-format": "{controller_alias}\t{controller_address}",
+      "tooltip-format-connected": "{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "on-click": "blueman-manager"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰃞","󰃟", "󰃠"],
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "network": {
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "{ipaddr} 󰊗",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "on-click": "nm-applet",
+    "max-length": 50
+  },
+
+
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "good": 95,
+      "warning": 40,
+      "critical": 15
+    },
+    "format": "{capacity}% {icon} ",
+    "format-charging": "{capacity}% {icon} ⚡",
+    "format-plugged": "{capacity}% {icon} (plugged)",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "cpu": {
+    "format": "CPU: {usage}%"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "RAM: {percentage}% | SWAP: {swapPercentage}%"
+
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon} ",
+    "format-muted": "MUTE",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol"
+  },
+
+  "custom/app_launcher": {
+    "format": "",
+    "tooltip": "Launcher",
+    "on-click": "rofi -show drun"
+  },
+  "cava": {
+        "cava_config": "/home/leo/.config/cava/cava.conf",
+        "framerate": 60,
+        "autosens": 1,
+        "sensitivity": 100,
+        "bars": 16,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 8000,
+        "hide_on_silence": false,
+        "format_silent": "quiet",
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": true,
+        "waves": true,
+        "noise_reduction": 0.77,
+        "input_delay": 0,
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                    "on-click-right": "mode"
+                    }
+    },
+
+  "tray": {
+    "spacing": 10
+  }
+}
+]

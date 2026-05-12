@@ -1,0 +1,187 @@
+[
+  {
+  "layer": "top",
+  "position": "bottom",
+  "height": 30,
+
+  "modules-left": ["custom/app_launcher"],
+  "modules-center": [""],
+  "modules-right": ["tray","pulseaudio","backlight","battery"],
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 5
+    }
+  },
+  "hyprland/window": {
+    "format": "{title}"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["",""],
+    "on-scroll-up": "brightnessctl set +5%",
+    "on-scroll-down": "brightnessctl set 5%-"
+  },
+
+  "network": {
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀 Connected",
+    "format-disconnected": " Offline"
+  },
+
+
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 5
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}% (lädt {time})",
+    "format-plugged": "{icon} {capacity}% (plugged)",
+    "format-icons": ["", "", "", "", ""]
+  },
+
+  "cpu": {
+    "format": "CPU: {usage}%"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "RAM: {percentage}% | SWAP: {swapPercentage}%"
+
+  },
+
+  "pulseaudio": {
+    "format": "Vol: {volume}% {icon}",
+    "format-muted": "MUTE",
+    "format-icons": {
+      "default": ["", "", ""]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol"
+  },
+
+  "custom/app_launcher": {
+    "format": "",
+    "tooltip": "Launcher",
+    "on-click": "hyprlauncher"
+  },
+"cava": {
+        "cava_config": "/home/leo/.config/cava/cava.conf",
+        "framerate": 60,
+        "autosens": 1,
+        "sensitivity": 100,
+        "bars": 16,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 10000,
+        "hide_on_silence": false,
+        "format_silent": "quiet",
+        "method": "pulse",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": true,
+        "waves": true,
+        "noise_reduction": 0.77,
+        "input_delay": 0,
+        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click-right": "mode"
+                   }
+    },
+
+  "tray": {
+    "spacing": 10
+  }
+},
+{
+  "layer": "top",
+  "position": "top",
+  "height": 20,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["hyprland/window"],
+  "modules-right": ["cpu", "memory"],
+
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "format": "{name}",
+    "persistent-workspaces": {
+      "*": 10
+    }
+  },
+  "hyprland/window": {
+    "format": "{title}"
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
+  },
+
+  "network": {
+    "format-wifi": " {signalStrength}%",
+    "format-ethernet": "󰈀 Connected",
+    "format-disconnected": " Offline"
+  },
+
+
+  "battery": {
+    "bat": "BAT0",
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 5
+    },
+    "format": "BAT0: {capacity}%",
+    "format-charging": "BAT0: {capacity}% (lädt {time})",
+    "format-plugged": "BAT0: {capacity}% (plugged)"
+  },
+
+  "cpu": {
+    "format": "CPU: {usage}%"
+  },
+
+  "memory": {
+    "interval": 30,
+    "format": "RAM: {percentage}% | SWAP: {swapPercentage}%"
+
+  },
+
+  "pulseaudio": {
+    "format": "Vol: {volume}% {icon}",
+    "format-muted": "Vol:  {volume}%",
+    "format-icons": {
+      "default": ["\uf026", "\uf027", "\uf028"]
+    },
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol"
+  }
+}
+]
